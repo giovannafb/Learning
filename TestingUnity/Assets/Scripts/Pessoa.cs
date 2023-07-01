@@ -7,15 +7,7 @@ public class Pessoa : MonoBehaviour, IMovement
 {
     Player1 pessoa = new Player1();
 
-    void  OnEnable()
-    {
-        PlayerAnimation.EnableAnim += EnableJump;
-    }
-
-    void OnDisable()
-    {
-        PlayerAnimation.EnableAnim -= EnableJump;
-    }
+    private bool isFacingRight = true;
 
     private float input;
     private Animator _animator;
@@ -53,6 +45,18 @@ public class Pessoa : MonoBehaviour, IMovement
         pessoa.Move(input);
     }
 
+    void  OnEnable()
+    {
+        PlayerAnimation.EnableAnim += EnableJump;
+        PlayerAnimation.DisableAnim += DisableJump;
+    }
+
+    void OnDisable()
+    {
+        PlayerAnimation.EnableAnim -= EnableJump;
+        PlayerAnimation.DisableAnim -= DisableJump;
+    }
+
     public void Jump()
     {
         pessoa.GetRigibody().AddForce(Vector2.up * pessoa.jumpForce, ForceMode2D.Impulse);
@@ -62,5 +66,18 @@ public class Pessoa : MonoBehaviour, IMovement
     public void EnableJump()
     {
         _animator.SetBool("isJumping", true);
+    }
+
+    public void DisableJump()
+    {
+        _animator.SetBool("isJumping", false);
+    }
+    
+    void Flip()
+    {
+        if(isFacingRight == false)
+        {
+            
+        }
     }
 }

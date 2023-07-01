@@ -8,7 +8,7 @@ public class Personagem
     protected string _nome;
     protected float velocidade;
     public float jumpForce;
-
+    
     protected Rigidbody2D rb;
 
     //Contrutores

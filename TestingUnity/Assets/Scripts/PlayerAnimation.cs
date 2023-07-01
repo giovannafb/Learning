@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public static Action EnableAnim;
+    public static Action DisableAnim;
 
     private Pessoa controller;
     void Start()
@@ -18,6 +19,10 @@ public class PlayerAnimation : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             EnableAnim?.Invoke();
+        }
+        else
+        {
+            DisableAnim?.Invoke();
         }
     }
 }
