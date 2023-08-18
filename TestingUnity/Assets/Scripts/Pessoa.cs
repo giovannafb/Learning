@@ -7,6 +7,10 @@ public class Pessoa : MonoBehaviour, IMovement
 {
     Player1 pessoa = new Player1();
 
+    public Action Flip;
+
+    private SpriteRenderer _sprite;
+
     private bool isFacingRight = true;
 
     private float input;
@@ -21,6 +25,7 @@ public class Pessoa : MonoBehaviour, IMovement
 
         _animator = GetComponent<Animator>();
 
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -37,6 +42,11 @@ public class Pessoa : MonoBehaviour, IMovement
         if(isJumping == true)
         {
             isJumping = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            TurnPlayer();
         }
     }
 
@@ -72,12 +82,11 @@ public class Pessoa : MonoBehaviour, IMovement
     {
         _animator.SetBool("isJumping", false);
     }
-    
-    void Flip()
+
+
+    public void TurnPlayer()
     {
-        if(isFacingRight == false)
-        {
-            
-        }
+        _sprite.flipY.Equals(true);
     }
+
 }
